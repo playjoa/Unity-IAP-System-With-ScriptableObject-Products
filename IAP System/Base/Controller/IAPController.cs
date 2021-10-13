@@ -101,8 +101,7 @@ namespace IAP_System.Base.Controller
                 var apple = _mStoreExtensionProvider.GetExtension<IAppleExtensions>();
                 apple.RestoreTransactions((result) =>
                 {
-                    Debug.Log(
-                        $"RestorePurchases continuing: {result}. If no further messages, no purchases available to restore.");
+                    Debug.Log($"RestorePurchases continuing: {result}. If no further messages, no purchases available to restore.");
                 });
             }
             else
@@ -121,8 +120,7 @@ namespace IAP_System.Base.Controller
                     _mStoreController.InitiatePurchase(product);
                 }
                 else
-                    Debug.Log(
-                        "BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+                    Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
             }
             else
                 Debug.Log("BuyProductID FAIL. Not initialized.");
@@ -158,8 +156,7 @@ namespace IAP_System.Base.Controller
 
         public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
         {
-            Debug.Log(
-                $"OnPurchaseFailed: FAIL. Product: '{product.definition.storeSpecificId}', PurchaseFailureReason: {failureReason}");
+            Debug.Log($"OnPurchaseFailed: FAIL. Product: '{product.definition.storeSpecificId}', PurchaseFailureReason: {failureReason}");
         }
     }
 }
