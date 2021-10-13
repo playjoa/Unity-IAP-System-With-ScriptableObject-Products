@@ -4,6 +4,8 @@
 
 ### Easily create custom products
 - Make your custom type of product types!
+- Easily create custom views for your products to be displayed in game!
+- Full IAP Controller.
 
 ```C#
 namespace IAP_System.Base.Products
@@ -23,7 +25,6 @@ namespace IAP_System.Base.Products
 ```
 
 ### Customize your IAP products 
-- Easily create custom view for your products to be displayed in game! 
 ```C#
 namespace IAP_System.Base.Products
 {
