@@ -1,6 +1,8 @@
 # Unity-IAP-ScriptableObject-Products
 
-## Easily create custom products
+<strong> - Obs: </strong> Tested with "com.unity.purchasing": "3.2.3"!
+
+### Easily create custom products
 - Make your custom type of product types!
 
 ```C#
@@ -20,7 +22,7 @@ namespace IAP_System.Base.Products
 }
 ```
 
-## Customize your IAP products 
+### Customize your IAP products 
 - Easily create custom view for your products to be displayed in game! 
 ```C#
 namespace IAP_System.Base.Products
