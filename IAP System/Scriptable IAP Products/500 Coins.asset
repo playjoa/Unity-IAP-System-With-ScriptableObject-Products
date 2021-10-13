@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a8eed81f2110049a080345254f355d, type: 3}
+  m_Name: 500 Coins
+  m_EditorClassIdentifier: 
+  productKey: myGame500Coins
+  productType: 0
+  productName: 500 Coins
+  productDescription: Get 500 coins
+  productQty: 500
+  productSprite: {fileID: 21300000, guid: 8899af7398f90f547ba8b3717ce405db, type: 3}
