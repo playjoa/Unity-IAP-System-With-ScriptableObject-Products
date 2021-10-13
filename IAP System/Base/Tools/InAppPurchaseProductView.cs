@@ -7,6 +7,9 @@ namespace IAP_System.Base.Tools
 {
     public class InAppPurchaseProductView : MonoBehaviour
     {
+        [Header("Product to display")]
+        [SerializeField] private InAppPurchaseProduct productToDisplayOnStart;
+        
         [Header("Buttons")]
         [SerializeField] private Button btnBuyProduct;
         
@@ -27,13 +30,19 @@ namespace IAP_System.Base.Tools
                 btnBuyProduct.onClick.AddListener(OnBuyProductClick);
         }
 
+        private void Start()
+        {
+            if (productToDisplayOnStart != null)
+                DisplayProduct(productToDisplayOnStart);
+        }
+
         private void OnDestroy()
         {
             if (btnBuyProduct != null)
                 btnBuyProduct.onClick.RemoveAllListeners();
         }
 
-        public void Initiate(InAppPurchaseProduct productToDisplay)
+        public void DisplayProduct(InAppPurchaseProduct productToDisplay)
         {
             if (productToDisplay == null)
             {

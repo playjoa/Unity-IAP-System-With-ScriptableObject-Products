@@ -27,18 +27,14 @@ namespace IAP_System.Base.Controller
             if (!ME)
             {
                 ME = this;
+                
                 InitializeProducts();
+                InitializePurchasing();
                 DontDestroyOnLoad(gameObject);
                 return;
             }
     
             DestroyImmediate(gameObject);
-        }
-
-        private void Start()
-        {
-            if (_mStoreController == null)
-                InitializePurchasing();
         }
 
         private void InitializeProducts()
@@ -57,13 +53,11 @@ namespace IAP_System.Base.Controller
                 ProductsInDisplay.Add(product);
                 _availableProducts.Add(product.ProductKey, product);
             }
-            Debug.Log($"Initialized Products {ProductsInDisplay}");
         }
 
         private void InitializePurchasing()
         {
-            if (IsInitialized)
-                return;
+            if (IsInitialized) return;
 
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
@@ -80,24 +74,21 @@ namespace IAP_System.Base.Controller
 
         public string GetPrice(InAppPurchaseProduct product)
         {
-            if (_mStoreController == null)
+            if (!IsInitialized)
                 InitializePurchasing();
 
-            return _mStoreController != null ? _mStoreController.products.WithID(product.ProductKey).metadata.localizedPriceString : "$ 0.00";
+            if (_availableProducts.TryGetValue(product.ProductKey, out var targetProduct))
+                return _mStoreController.products.WithID(targetProduct.ProductKey).metadata.localizedPriceString;
+            
+            return "$ 0.00";
         }
 
         public void RestorePurchases()
         {
-            if (!IsInitialized)
-            {
-                Debug.Log("RestorePurchases FAIL. Not initialized.");
-                return;
-            }
+            if (!IsInitialized) return;
 
             if (InAppleDevice)
             {
-                Debug.Log("RestorePurchases started ...");
-
                 var apple = _mStoreExtensionProvider.GetExtension<IAppleExtensions>();
                 apple.RestoreTransactions((result) =>
                 {
@@ -110,26 +101,18 @@ namespace IAP_System.Base.Controller
 
         public void BuyProductID(InAppPurchaseProduct productToBuy)
         {
-            if (IsInitialized)
-            {
-                var product = _mStoreController.products.WithID(productToBuy.ProductKey);
+            if (!IsInitialized) return;
 
-                if (product is { availableToPurchase: true })
-                {
-                    Debug.Log($"Purchasing product asynchronously: '{product.definition.id}'");
-                    _mStoreController.InitiatePurchase(product);
-                }
-                else
-                    Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
-            }
+            var product = _mStoreController.products.WithID(productToBuy.ProductKey);
+
+            if (product is { availableToPurchase: true })
+                _mStoreController.InitiatePurchase(product);
             else
-                Debug.Log("BuyProductID FAIL. Not initialized.");
+                Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
         }
 
         public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
         {
-            Debug.Log("OnInitialized: PASS");
-        
             _mStoreController = controller;
             _mStoreExtensionProvider = extensions;
         }

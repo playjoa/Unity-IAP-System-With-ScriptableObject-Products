@@ -20,7 +20,12 @@ namespace IAP_System.Base.Tools
             foreach (var targetDisplay in productDisplays)
             {
                 var product = IAPController.ME.GetProduct(targetDisplay.ProductKey);
-                if(product == null) continue;
+                
+                if (product == null)
+                {
+                    Debug.LogError($"No product found with key :{targetDisplay.ProductKey} to display");
+                    continue;
+                }
                 
                 targetDisplay.SetProductView(product);
             }
@@ -37,7 +42,7 @@ namespace IAP_System.Base.Tools
         
         public void SetProductView(InAppPurchaseProduct productToDisplay)
         {
-            productView.Initiate(productToDisplay);
+            productView.DisplayProduct(productToDisplay);
         }
     }
 }
