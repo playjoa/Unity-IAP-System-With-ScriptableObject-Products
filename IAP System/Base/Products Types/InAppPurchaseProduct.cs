@@ -6,6 +6,7 @@ namespace IAP_System.Base.Products
 {
     public abstract class InAppPurchaseProduct : ScriptableObject
     {
+        [Tooltip("Your AppStore/GooglePlay IAP Key Here")]
         [SerializeField] protected string productKey = "myGame500Coins";
         [SerializeField] protected ProductType productType = ProductType.Consumable;
         [SerializeField] protected string productName = "500 Coins";

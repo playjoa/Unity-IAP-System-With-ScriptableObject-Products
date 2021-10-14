@@ -2,10 +2,19 @@
 
 <strong> - Obs: </strong> Tested with "com.unity.purchasing": "3.2.3"!
 
-### Easily create custom products
+## Create your custom products
 - Make your custom type of product types!
 - Easily create custom views for your products to be displayed in game!
 - Full IAP Controller.
+
+### Easily Edit Product Data
+![1](Screenshots/1.png)
+
+### Initialize the controller in StartUp Screen
+![1](Screenshots/2.png)
+
+### Create your custom views to display in game
+![1](Screenshots/3.png)
 
 ```C#
 namespace IAP_System.Base.Products
