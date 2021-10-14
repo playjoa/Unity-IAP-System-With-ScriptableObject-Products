@@ -7,7 +7,7 @@
 - Easily create custom views for your products to be displayed in game!
 - Full IAP Controller.
 
-### Easily Edit Product Data
+### Edit Product Data in Inspector
 ![1](Screenshots/1.png)
 
 ### Initialize the controller in StartUp Screen
