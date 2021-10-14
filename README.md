@@ -18,6 +18,7 @@
 ### Create your custom views to display in game
 ![1](Screenshots/3.png)
 
+### Create any type of products
 ```C#
 namespace IAP_System.Base.Products
 {
