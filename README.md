@@ -2,8 +2,6 @@
 
 <strong> - Obs: </strong> Tested with "com.unity.purchasing": "3.2.3"!
 
-## Create your custom products
-- Make your custom type of product types!
 ### Easily create custom products
 - Make your custom type of product!
 - Easily create custom views for your products to be displayed in game!
